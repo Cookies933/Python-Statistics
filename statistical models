@@ -1,0 +1,127 @@
+#Using python to calculate statistical models
+
+from doctest import Example
+import numpy as np
+
+values = [13,21,21,40,42,48,55,72]
+
+x = np.median(values)  #finding the median
+y = np.min(values) #finding the minimum value
+print (y)
+
+
+from statistics import multimode
+
+values = [4,7,3,8,11,77,10,19,6,9,12,12]
+z = multimode(values)  # finding multimodes from lists
+print(z)
+
+import numpy
+
+values = [13,21,21,40,48,55,72]
+a = numpy.ptp(values) #finding the range
+print(a)
+
+import numpy
+
+values = [13,21,21,40,42,48,55,72]
+b = numpy.quantile(values, [0,0.25,0.5,0.75,1]) #quartiles
+
+print(b)
+
+#Standard deviation
+import numpy as np
+
+values = [4,11,7,14]
+c = np.std(values) # population standard deviation
+d = np.std(values,ddof=1) # sample standard deviation
+
+print (c)
+print (d)
+
+#Finding the P-value of a Z-Value
+import scipy.stats as stats 
+print(stats.norm.cdf(3))
+
+#Finding the Z-value of a P-Value
+import scipy.stats as stats
+print(stats.norm.ppf(0.9))
+
+#Finding the P-Value of a T-Value
+import scipy.stats as stats
+print(stats.t.cdf(2.1, 29))
+
+#Finding the T-value of a P-Value
+import scipy.stats as stats
+print(stats.t.ppf(0.75, 29))
+
+#Calculating the Margin of Error - find the Z-value for an /2 = 0.025
+import scipy.stats as stats
+print(stats.norm.ppf(1-0.025))
+
+
+#Calculating a Confidence Interval -the sample size is 30 and the occurrences is 6
+
+import scipy.stats as stats
+import math
+
+# Specify sample occurrences (x), sample size (n) and confidence level
+x = 6
+n = 30
+confidence_level = 0.95
+
+# Calculate the point estimate, alpha, the critical z-value, the standard error, and the margin of error
+point_estimate = x/n
+alpha = (1-confidence_level)
+critical_z = stats.norm.ppf(1-alpha/2)
+standard_error = math.sqrt((point_estimate*(1-point_estimate)/n))
+margin_of_error = critical_z * standard_error
+
+# Calculate the lower and upper bound of the confidence interval
+lower_bound = point_estimate - margin_of_error
+upper_bound = point_estimate + margin_of_error
+
+# Print the results
+print("Point Estimate: {:.3f}".format(point_estimate))
+print("Critical Z-value: {:.3f}".format(critical_z))
+print("Margin of Error: {:.3f}".format(margin_of_error))
+print("Confidence Interval: [{:.3f},{:.3f}]".format(lower_bound,upper_bound))
+print("The {:.1%} confidence interval for the population proportion is:".format(confidence_level))
+print("between {:.3f} and {:.3f}".format(lower_bound,upper_bound))
+
+import scipy.stats as stats
+import math
+
+# Specify the sample mean (x_bar), the sample standard deviation (s), the mean claimed in the null-hypothesis (mu_null), and the sample size (n)
+x_bar = 62.1
+s = 13.46
+mu_null = 60
+n = 30
+
+# Calculate and print the test statistic
+print((x_bar - mu_null)/(s/math.sqrt(n)))
+
+# %%
+import matplotlib.pylab as plt
+import numpy as np
+
+# %% 
+plt.figure()
+plt.plot(np.sin(np.linspace(-np.pi, np.pi, 1001)))
+plt.show()
+# %%
+
+
+
+#%% Using this function allows for interactive mode on vs code
+
+import matplotlib.pyplot as plt
+list = [2,5,67,2,3,5,23,124]
+df = plt.hist(list)
+
+#%%
+#function find the T-Value for an /2 = 0.025 at 29 degrees of freedom (df).
+import scipy.stats as stats
+print(stats.t.ppf(0.025, 29))
+df = plt.show()
+#%%
